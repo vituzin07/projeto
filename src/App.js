@@ -1,22 +1,34 @@
+import { listarCatalogo } from './api/api.js';
 import './App.css';
 import Card from './Card/Card.js';
+import {useEffect, useState} from 'react'
 
 function App() {
+  const [catalogo, setCatalogo] =useState([])
+
+  useEffect(() => {
+    listarCatalogo()
+    .then((dados) => {
+      setCatalogo(dados);
+    })
+  }, []);
+
   return (
     <div className="App">
-      <Card 
-      imagem='foto-capa-pokmfr.png'
-      titulo='Pokémon Fire Red'
-      desenvolvedor='Game Freak'
-      plataforma= 'Game Boy Advance'
-      />
-      <Card
-     imagem='foto-capa-hades.png'
-     titulo='Hades'
-     desenvolvedor='Supergiant Games'
-     plataforma= 'Nintendo Switch, Playstation 5, Playstatio 4, macOS, iOS, Xbox One, Xbox Series X e Series S, Microsoft Windows'
-      />
-    </div>
+      <div className='text'>
+        <p>
+          Destaques          
+        </p>
+      </div>
+      {catalogo.map((jogo, i) => {
+      return <Card
+      key={i}
+      capa={ jogo.urlCapa}
+      titulo={jogo.nome}
+      dataLancamento={jogo.dataLancamento}
+      avalicao={jogo.avaliacao} />
+      })}
+      </div> 
   );
 }
 
