@@ -1,35 +1,22 @@
-import { listarCatalogo } from './api/api.js';
-import './App.css';
-import Card from './Card/Card.js';
-import {useEffect, useState} from 'react'
+import './App.css'
+import Layout from "./Layout/Layout";
+import Sobre from "./Sobre/Sobre";
+import NotFound from "./Notfound/NotFound";
+import { RouterProvider, BrowserRouter, Routes, Route} from 'react-router-dom'
+import Catalogo from './Catalogo/Catalogo';
 
-function App() {
-  const [catalogo, setCatalogo] =useState([])
 
-  useEffect(() => {
-    listarCatalogo()
-    .then((dados) => {
-      setCatalogo(dados);
-    })
-  }, []);
-
-  return (
-    <div className="App">
-      <div className='text'>
-        <p>
-          Destaques          
-        </p>
-      </div>
-      {catalogo.map((jogo, i) => {
-      return <Card
-      key={i}
-      capa={ jogo.urlCapa}
-      titulo={jogo.nome}
-      dataLancamento={jogo.dataLancamento}
-      avalicao={jogo.avaliacao} />
-      })}
-      </div> 
-  );
+function App(){
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout/>}>
+                    <Route index element={<Catalogo/>}/>
+                    <Route path ='Sobre' element={<Sobre/>}/>
+                    <Route path ='*' element ={<NotFound/>}/> 
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    )
 }
-
-export default App;
+export default App
