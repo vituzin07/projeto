@@ -18,7 +18,11 @@ export default function Catalogo() {
   return (
     
     <div className="Catalogo">
-      
+      <div className='text'>
+      <h1>
+        Destaques
+      </h1>
+      </div>
       {jogo.map((jogo, i) => {
       return <Card
       key={i}

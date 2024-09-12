@@ -3,14 +3,12 @@ import './navbar.css'
 export default function Navbar(){
     return(
         <nav>
-            <ul>
-                <li>
-                    <Link to='/'>Inicio</Link>
-                </li>
-                <li>
-                    <Link to='Sobre'>Sobre</Link>
-                </li>
-            </ul>
+            <div className="Navbar">
+                    <Link to='/'><div className="inicio">Inicio</div></Link>
+                    <Link to='Sobre'><div className="Sobre">Sobre</div></Link>
+                    <div className="SearchBar"><input type="text" placeholder="Pesquise"></input></div>
+            </div>
+
         </nav>
     )
 }

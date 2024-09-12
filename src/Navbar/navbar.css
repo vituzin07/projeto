@@ -1,3 +1,18 @@
-.ul{
+.Navbar{
+ 
+    .Sobre{
+        padding: 10px;
+        color: white;
+    }
+    .inicio{
+        padding: 10px;
+        color: white;
+    }
     background-color: blue;
+    display: flex;
+    flex-direction: row;
+}
+.SearchBar{
+    padding: 10px;
+    padding-left: 1000px;
 }
